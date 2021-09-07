@@ -1,0 +1,1 @@
+curl -X POST -F "ifc-file=@/home/serge/oeg-projects/bimerr/domains/building/ifc_files/OneSpace_MaterialPset.ifc" http://localhost:5000
