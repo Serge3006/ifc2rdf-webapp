@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KGG</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+    <header class="showcase">
+        <div class="showcase-top">
+            <h1>Knowledge Graph Generator</h1>
+        </div>
+
+        
+        <div class="showcase-content">
+            <div class="domain-selection">
+                <p>Select domain:</p>
+                <div>
+                    <select name="domain" id="domain">
+                        <option value="construction">Construction</option>
+                        <option value="process">Processes</option>    
+                    </select>
+                </div>
+            </div>
+            <div class="file-selection">
+                <p>Choose file:</p>
+                <div>
+                    <input type="file" id="file" onsubmit="return false">
+                </div>
+            </div>
+
+            <a type="button" href="#012" class="btn" id="convert">Convert</a>
+
+            <div style="display: none;" id="success">
+                <p>Data converted successfully!</p>
+            </div>
+            
+        </div>
+
+    </header>
+    <script type="text/javascript" src="js/sketch.js"></script>
+    
+</body>
+
+
+
+</html>

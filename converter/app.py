@@ -3,21 +3,24 @@ import os
 import subprocess
 import tempfile
 import requests
+import time
 from blazegraph.pymantic import sparql
 
+from flask_cors import CORS
 from flask.helpers import make_response
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/", methods=["GET", "POST"])
-def hello_world():
+def hello_world(domain):
 
     if request.method == "POST":
 
-        if "ifc-file" not in request.files:
+        if "data" not in request.files:
             abort(400)
 
-        file = request.files["ifc-file"]
+        file = request.files["data"]
         filename = file.filename
 
         if filename[-4:] != ".ifc":
@@ -36,7 +39,7 @@ def hello_world():
         #server = sparql.SPARQLServer('http://172.18.0.1:9999/blazegraph/sparql', post_directly=True)
 
         #server.update('load <file://' + temporal_rdf_filepath + '> into graph <https://building>')
-
+        print("here")
         with open(temporal_rdf_filepath, "r") as f:
             results = f.read()
 
@@ -58,5 +61,5 @@ def handle_500_error(e):
 
 
 if __name__ == "__main__":
-
-    app.run(debug=True)
+    port = 5000
+    app.run(host="0.0.0.0", debug=True, port=port)
