@@ -31,3 +31,4 @@ tempora==4.1.1
 urllib3==1.26.6
 Werkzeug==2.0.1
 zc.lockfile==2.0
+pytest==6.2.5
