@@ -25,15 +25,15 @@ def converter():
         if filename[-4:] != ".ifc":
             abort(400)
         
-        temporal_ifc_file = tempfile.NamedTemporaryFile(suffix=".ifc", dir="converter/examples/ifc")
-        temporal_rdf_file = tempfile.NamedTemporaryFile(suffix=".ttl", dir="converter/examples/rdf")
+        temporal_ifc_file = tempfile.NamedTemporaryFile(suffix=".ifc", dir="examples/ifc")
+        temporal_rdf_file = tempfile.NamedTemporaryFile(suffix=".ttl", dir="examples/rdf")
 
         temporal_ifc_filepath = temporal_ifc_file.name
         temporal_rdf_filepath = temporal_rdf_file.name
 
         file.save(temporal_ifc_filepath)
 
-        subprocess.run(["java", "-jar", "converter/IFCtoRDF-0.4-shaded.jar", temporal_ifc_filepath, temporal_rdf_filepath])
+        subprocess.run(["java", "-jar", "IFCtoRDF-0.4-shaded.jar", temporal_ifc_filepath, temporal_rdf_filepath])
 
         #server = sparql.SPARQLServer('http://172.18.0.1:9999/blazegraph/sparql', post_directly=True)
 
