@@ -1,3 +1,12 @@
+"""
+KGG Aplication that transform IFC files into RDF data.
+The application should be executed from the 'converter' folder in order
+to avoid folder location issues:
+
+"ifc2rdf-webapp/converter$ python app.py"
+
+"""
+
 from flask import Flask, request, abort, jsonify
 import os
 import subprocess
@@ -24,6 +33,9 @@ def converter():
 
         if filename[-4:] != ".ifc":
             abort(400)
+
+        os.makedirs("examples/ifc", exist_ok=True)
+        os.makedirs("examples/rdf", exist_ok=True)
         
         temporal_ifc_file = tempfile.NamedTemporaryFile(suffix=".ifc", dir="examples/ifc")
         temporal_rdf_file = tempfile.NamedTemporaryFile(suffix=".ttl", dir="examples/rdf")
